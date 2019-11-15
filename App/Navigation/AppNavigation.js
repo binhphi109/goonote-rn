@@ -1,18 +1,32 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+import { createStackNavigator, createDrawerNavigator, createAppContainer } from 'react-navigation'
+import DrawerContainer from '../Containers/DrawerContainer/DrawerContainer'
 import LaunchScreen from '../Containers/LaunchScreen'
 
-import styles from './Styles/NavigationStyles'
+const MainNavigator = createStackNavigator(
+  {
+    Home: LaunchScreen
+  },
+  {
+    initialRouteName: 'Home',
+    // headerMode: 'float',
+    defaulfNavigationOptions: ({ navigation }) => ({
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        alignSelf: 'left',
+        flex: 1
+      }
+    })
+  }
+)
 
 // Manifest of possible screens
-const PrimaryNav = createStackNavigator({
-  LaunchScreen: { screen: LaunchScreen }
+const DrawerStack = createDrawerNavigator({
+  Main: MainNavigator
 }, {
-  // Default config for all screens
-  headerMode: 'none',
-  initialRouteName: 'LaunchScreen',
-  navigationOptions: {
-    headerStyle: styles.header
-  }
+  initialRouteName: 'Main',
+  drawerWidth: 250,
+  contentComponent: DrawerContainer
 })
 
-export default createAppContainer(PrimaryNav)
+export default createAppContainer(DrawerStack)
