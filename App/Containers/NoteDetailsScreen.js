@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Images, Metrics, Colors, Fonts } from '../Themes/'
+import { Images, Metrics, Colors, Fonts } from '../Themes'
+import moment from 'moment';
 
-export default class NoteScreen extends Component {
+export default class NoteDetailsScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Note',
+    title: 'Note details',
     headerLeft: (
       <TouchableOpacity style={{ marginLeft: 10, padding: 10 }} onPress={() => navigation.goBack()}>
         <Icon
@@ -17,24 +18,22 @@ export default class NoteScreen extends Component {
   });
 
   render () {
+    const note = this.props.navigation.getParam('note', {})
+
     return (
       <View style={styles.root}>
         <ScrollView style={styles.container}>
-
-          <View style={styles.section} >
-            <View style={styles.sectionHeader}>
-              <Text style={styles.title}>
-                Note of day #1
-              </Text>
-              <Text style={styles.subtitle}>
-                5 min ago
-              </Text>
+          <View style={styles.sectionHeader}>
+            <Text style={styles.title}>{note.title}</Text>
+          </View>
+          <View style={styles.sectionContent}>
+            <View style={styles.sectionMeta}>
+              <Text style={styles.subtitle}>Created {moment(note.created).fromNow()}</Text>
             </View>
-            <Text style={styles.sectionText}>
-              This probably isn't what your app is going to look like. Unless your designer handed you this screen and, in that case, congrats! You're ready to ship. For everyone else, this is where you'll see a live preview of your fully functioning app using Ignite.
+            <Text style={styles.text}>
+              {note.content}
             </Text>
           </View>
-
         </ScrollView>
       </View>
     )
@@ -50,20 +49,26 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.transparent
   },
   section: {
-    padding: 16
   },
   sectionHeader: {
-    marginBottom: 16
+    padding: 16,
+    backgroundColor: '#DFECF3',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: 'grey'
   },
   title: {
-    fontWeight: 'bold'
+    fontSize: 18
   },
-  subtitle: {
+  sectionContent: {
+    padding: 16
 
   },
-  sectionText: {
+  sectionMeta: {
   },
-  titleText: {
-    fontSize: 12
+  subtitle: {
+    fontSize: 12,
+    marginBottom: 16,
+  },
+  text: {
   }
 })
