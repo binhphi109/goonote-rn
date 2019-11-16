@@ -1,13 +1,17 @@
 import { createStackNavigator, createDrawerNavigator, createAppContainer } from 'react-navigation'
 import DrawerContainer from '../Containers/DrawerContainer/DrawerContainer'
-import LaunchScreen from '../Containers/LaunchScreen'
+import HomeScreen from '../Containers/HomeScreen'
+import NoteScreen from '../Containers/NoteScreen'
+import CreateNoteScreen from '../Containers/CreateNoteScreen'
 
 const MainNavigator = createStackNavigator(
   {
-    Home: LaunchScreen
+    HomeScreen: { screen: HomeScreen },
+    NoteScreen: { screen: NoteScreen },
+    CreateNoteScreen: { screen: CreateNoteScreen }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'HomeScreen',
     // headerMode: 'float',
     defaulfNavigationOptions: ({ navigation }) => ({
       headerTitleStyle: {

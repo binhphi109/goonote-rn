@@ -1,24 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native'
+import { ScrollView, Text, Image, View } from 'react-native'
 import { Images } from '../Themes'
-import Icon from 'react-native-vector-icons/FontAwesome'
 
 // Styles
 import styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: 'Home',
-    headerLeft: (
-      <TouchableOpacity style={{ marginLeft: 10, padding: 10 }} onPress={() => navigation.openDrawer()}>
-        <Icon
-          name='bars'
-          size={24}
-        />
-      </TouchableOpacity>
-    )
-  });
-
   render () {
     return (
       <View style={styles.mainContainer}>
