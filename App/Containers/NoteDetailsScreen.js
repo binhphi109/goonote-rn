@@ -27,9 +27,6 @@ export default class NoteDetailsScreen extends Component {
             <Text style={styles.title}>{note.title}</Text>
           </View>
           <View style={styles.sectionContent}>
-            <View style={styles.sectionMeta}>
-              <Text style={styles.subtitle}>Created {moment(note.created).fromNow()}</Text>
-            </View>
             <Text style={styles.text}>
               {note.content}
             </Text>
