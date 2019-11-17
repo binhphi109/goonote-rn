@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-navigation'
-import Devider from '../../Components/Drawer/Devider'
-import DrawerItem from '../../Components/Drawer/DrawItem'
-import DrawerHeader from '../../Components/Drawer/DrawHeader'
+import { SafeAreaView, NavigationActions, StackActions, SwitchActions } from 'react-navigation'
+import Devider from '../Components/Drawer/Devider'
+import DrawerItem from '../Components/Drawer/DrawItem'
+import DrawerHeader from '../Components/Drawer/DrawHeader'
 
 class DrawerContainer extends React.Component {
   render () {
@@ -33,7 +33,16 @@ class DrawerContainer extends React.Component {
             title='Settings'
             icon='cog'
             onPress={() => {
-              navigation.navigate('Categories')
+              navigation.navigate('Settings')
+              navigation.closeDrawer()
+            }}
+          />
+          <Devider />
+          <DrawerItem
+            title='Logout'
+            icon='sign-out'
+            onPress={() => {
+              navigation.navigate('Auth')
               navigation.closeDrawer()
             }}
           />

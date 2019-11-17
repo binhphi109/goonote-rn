@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     padding: 16,
-    backgroundColor: '#DFECF3',
+    backgroundColor: '#F1F1F1',
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: 'grey'
   },

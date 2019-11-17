@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
+import { ScrollView, Text, Image, View, StyleSheet } from 'react-native'
 import { Images } from '../Themes'
+import { Metrics, ApplicationStyles } from '../Themes/'
 
-// Styles
-import styles from './Styles/LaunchScreenStyles'
 
 export default class LaunchScreen extends Component {
+
+  componentDidMount() {
+    this.props.navigation.navigate('Auth')
+  }
+
   render () {
     return (
       <View style={styles.mainContainer}>
@@ -27,3 +31,19 @@ export default class LaunchScreen extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  ...ApplicationStyles.screen,
+  container: {
+    paddingBottom: Metrics.baseMargin
+  },
+  logo: {
+    marginTop: Metrics.doubleSection,
+    height: Metrics.images.logo,
+    width: Metrics.images.logo,
+    resizeMode: 'contain'
+  },
+  centered: {
+    alignItems: 'center'
+  }
+})

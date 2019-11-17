@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { ScrollView, Text, Image, View, TouchableOpacity, TouchableHighlight, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Images, Metrics, Colors, Fonts } from '../Themes/'
 import moment from 'moment'
@@ -18,7 +18,7 @@ export default class HomeScreen extends Component {
   })
 
   handleNotePress = (note) => {
-    this.props.navigation.push('NoteDetailsScreen', { note })
+    this.props.navigation.push('NoteDetails', { note })
   }
 
   render () {
@@ -45,8 +45,10 @@ export default class HomeScreen extends Component {
         <ScrollView style={styles.container}>
 
           {notes.map(note => 
-            <View key={note.id} style={styles.section} >
-              <TouchableOpacity onPress={() => this.handleNotePress(note)}>
+            <TouchableHighlight key={note.id}
+              underlayColor='#DFECF3'
+              onPress={() => this.handleNotePress(note)}>
+              <View style={styles.section} >
                 <View style={styles.sectionHeader}>
                   <Text style={styles.title}>
                     {note.title}
@@ -55,11 +57,11 @@ export default class HomeScreen extends Component {
                     Created {moment(note.created).fromNow()}
                   </Text>
                 </View>
-                <Text style={styles.sectionText} numberOfLines={2}>
+                <Text style={styles.text} numberOfLines={2}>
                   {note.content}
                 </Text>
-              </TouchableOpacity>
-            </View>
+              </View>
+            </TouchableHighlight>
           )}
 
         </ScrollView>
@@ -88,11 +90,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   subtitle: {
-
-  },
-  sectionText: {
-  },
-  titleText: {
     fontSize: 12
+  },
+  text: {
   }
 })

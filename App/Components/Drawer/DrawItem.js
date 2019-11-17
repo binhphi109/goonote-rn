@@ -9,11 +9,11 @@ class DrawerItem extends React.Component {
     return (
       <TouchableHighlight
         onPress={this.props.onPress}
-        style={styles.btnClickContain}
+        style={styles.root}
         underlayColor='#DFECF3'
       >
         <View style={styles.container}>
-          <Icon name={icon} size={24} color='#2E637B' style={styles.icon}/>
+          <Icon name={icon} size={24} color='#2E637B' style={styles.icon} />
           <Text style={styles.text}>{this.props.title}</Text>
         </View>
       </TouchableHighlight>
@@ -22,8 +22,8 @@ class DrawerItem extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  btnClickContain: {
-    flexDirection: 'row',
+  root: {
+    flexDirection: 'row'
   },
   container: {
     margin: 8,
