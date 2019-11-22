@@ -1,4 +1,4 @@
-package com.film;
+package com.goonote;
 
 import android.app.Application;
 

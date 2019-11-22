@@ -3,11 +3,15 @@ import { View, StatusBar, StyleSheet } from 'react-native'
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
+import ReduxPersist from '../Config/ReduxPersist'
 import {Fonts, Metrics, Colors} from '../Themes/'
 
 class RootContainer extends Component {
   componentDidMount () {
-    this.props.startup()
+    // if redux persist is not active fire startup action
+    if (!ReduxPersist.active) {
+      this.props.startup()
+    }
   }
 
   render () {

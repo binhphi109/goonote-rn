@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "film-tvOS.app"
-               BlueprintName = "film-tvOS"
-               ReferencedContainer = "container:film.xcodeproj">
+               BuildableName = "GooNote-tvOS.app"
+               BlueprintName = "GooNote-tvOS"
+               ReferencedContainer = "container:GooNote.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "film-tvOSTests.xctest"
-               BlueprintName = "film-tvOSTests"
-               ReferencedContainer = "container:film.xcodeproj">
+               BuildableName = "GooNote-tvOSTests.xctest"
+               BlueprintName = "GooNote-tvOSTests"
+               ReferencedContainer = "container:GooNote.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "film-tvOSTests.xctest"
-               BlueprintName = "film-tvOSTests"
-               ReferencedContainer = "container:film.xcodeproj">
+               BuildableName = "GooNote-tvOSTests.xctest"
+               BlueprintName = "GooNote-tvOSTests"
+               ReferencedContainer = "container:GooNote.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "film-tvOS.app"
-            BlueprintName = "film-tvOS"
-            ReferencedContainer = "container:film.xcodeproj">
+            BuildableName = "GooNote-tvOS.app"
+            BlueprintName = "GooNote-tvOS"
+            ReferencedContainer = "container:GooNote.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "film-tvOS.app"
-            BlueprintName = "film-tvOS"
-            ReferencedContainer = "container:film.xcodeproj">
+            BuildableName = "GooNote-tvOS.app"
+            BlueprintName = "GooNote-tvOS"
+            ReferencedContainer = "container:GooNote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "film-tvOS.app"
-            BlueprintName = "film-tvOS"
-            ReferencedContainer = "container:film.xcodeproj">
+            BuildableName = "GooNote-tvOS.app"
+            BlueprintName = "GooNote-tvOS"
+            ReferencedContainer = "container:GooNote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
