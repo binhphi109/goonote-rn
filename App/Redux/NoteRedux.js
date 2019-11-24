@@ -16,49 +16,48 @@ export default Creators
 /* ------------- Selectors ------------- */
 
 export const NoteSelectors = {
-  selectAvatar: state => state.note.avatar
+  selectNotes: state => state.note.notes
 }
 
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  avatar: null,
   fetching: null,
   error: null,
-  notename: null
+  notes: null
 })
 
 /* ------------- Reducers ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.GET_ALL_NOTES_REQUEST]: (state, { notename }) => {
-    state.merge({ fetching: true, notename, avatar: null })
+  [Types.GET_ALL_NOTES_REQUEST]: (state, action) => {
+    return state.merge({ fetching: true })
   },
   [Types.GET_ALL_NOTES_SUCCESS]: (state, action) => {
-    const { avatar } = action
-    return state.merge({ fetching: false, error: null, avatar })
+    const notes = action.payload
+    return state.merge({ fetching: false, error: null, notes })
   },
   [Types.GET_ALL_NOTES_FAILURE]: (state) => {
-    state.merge({ fetching: false, error: true, avatar: null })
+    return state.merge({ fetching: false, error: true, notes: null })
   },
   [Types.GET_ONE_NOTE_REQUEST]: (state, { notename }) => {
-    state.merge({ fetching: true, notename, avatar: null })
+    return state.merge({ fetching: true, notename, avatar: null })
   },
   [Types.GET_ONE_NOTE_SUCCESS]: (state, action) => {
     const { avatar } = action
     return state.merge({ fetching: false, error: null, avatar })
   },
   [Types.GET_ONE_NOTE_FAILURE]: (state) => {
-    state.merge({ fetching: false, error: true, avatar: null })
+    return state.merge({ fetching: false, error: true, avatar: null })
   },
   [Types.CREATE_NOTE_REQUEST]: (state, { notename }) => {
-    state.merge({ fetching: true, notename, avatar: null })
+    return state.merge({ fetching: true, notename, avatar: null })
   },
   [Types.CREATE_NOTE_SUCCESS]: (state, action) => {
     const { avatar } = action
     return state.merge({ fetching: false, error: null, avatar })
   },
   [Types.CREATE_NOTE_FAILURE]: (state) => {
-    state.merge({ fetching: false, error: true, avatar: null })
+    return state.merge({ fetching: false, error: true, avatar: null })
   },
 })

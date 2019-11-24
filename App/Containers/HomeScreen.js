@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators, compose } from 'redux'
 import { ScrollView, Text, Image, View, TouchableOpacity, TouchableHighlight, StyleSheet } from 'react-native'
+import moment from 'moment'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Images, Metrics, Colors, Fonts } from '../Themes/'
-import moment from 'moment'
+import { empty } from '../Lib/Utils/EmptyUtils'
+import NoteActions, { NoteSelectors } from '../Redux/NoteRedux'
 
-export default class HomeScreen extends Component {
+const mapStateToProps = (state) => ({
+  notes: NoteSelectors.selectNotes(state)
+})
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  getAllNotes: NoteActions.getAllNotes
+}, dispatch)
+
+class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Home',
     headerLeft: (
@@ -17,34 +29,26 @@ export default class HomeScreen extends Component {
     )
   })
 
+  componentDidMount () {
+    const { notes } = this.props
+
+    // if (empty(notes)) {
+      this.props.getAllNotes()
+    // }
+  }
+
   handleNotePress = (note) => {
     this.props.navigation.push('NoteDetails', { note })
   }
 
   render () {
-    const {} = this.props;
-    const notes = [{
-      id: 1,
-      title: "Note of day #1",
-      created: new Date(),
-      content: "This probably isn't what your app is going to look like. Unless your designer handed you this screen and, in that case, congrats! You're ready to ship. For everyone else, this is where you'll see a live preview of your fully functioning app using Ignite.",
-    },{
-      id: 2,
-      title: "Note of day #2",
-      created: new Date("11/16/2019"),
-      content: "This probably isn't what your app is going to look like. Unless your designer handed you this screen and, in that case, congrats! You're ready to ship. For everyone else, this is where you'll see a live preview of your fully functioning app using Ignite.",
-    },{
-      id: 3,
-      title: "Note of day #3",
-      created: new Date("11/15/2019"),
-      content: "This probably isn't what your app is going to look like. Unless your designer handed you this screen and, in that case, congrats! You're ready to ship. For everyone else, this is where you'll see a live preview of your fully functioning app using Ignite.",
-    }];
+    const { notes } = this.props
 
     return (
       <View style={styles.root}>
         <ScrollView style={styles.container}>
 
-          {notes.map(note => 
+          {notes && notes.map(note => 
             <TouchableHighlight key={note.id}
               underlayColor='#DFECF3'
               onPress={() => this.handleNotePress(note)}>
@@ -95,3 +99,7 @@ const styles = StyleSheet.create({
   text: {
   }
 })
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps)
+)(HomeScreen)
