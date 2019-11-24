@@ -1,9 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators, compose } from 'redux'
 import { View, StyleSheet } from 'react-native'
-import { SafeAreaView, NavigationActions, StackActions, SwitchActions } from 'react-navigation'
+import { SafeAreaView } from 'react-navigation'
 import Devider from '../Components/Drawer/Devider'
 import DrawerItem from '../Components/Drawer/DrawItem'
 import DrawerHeader from '../Components/Drawer/DrawHeader'
+import UserActions from '../Redux/UserRedux'
+
+const mapStateToProps = (state) => ({
+})
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+  logout: UserActions.logout
+}, dispatch)
 
 class DrawerContainer extends React.Component {
   render () {
@@ -42,6 +52,7 @@ class DrawerContainer extends React.Component {
             title='Logout'
             icon='sign-out'
             onPress={() => {
+              this.props.logout()
               navigation.navigate('Auth')
               navigation.closeDrawer()
             }}
@@ -65,4 +76,6 @@ const styles = StyleSheet.create({
   }
 })
 
-export default DrawerContainer
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps)
+)(DrawerContainer)

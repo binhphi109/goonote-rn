@@ -1,3 +1,4 @@
+import { PersistGate } from 'redux-persist/integration/react'
 import '../Config'
 import DebugConfig from '../Config/DebugConfig'
 import React, { Component } from 'react'
@@ -21,7 +22,9 @@ class App extends Component {
   render () {
     return (
       <Provider store={store}>
-        <RootContainer />
+        <PersistGate persistor={store.__PERSISTOR} loading={null}>
+          <RootContainer />
+        </PersistGate>
       </Provider>
     )
   }

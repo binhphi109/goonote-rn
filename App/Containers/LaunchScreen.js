@@ -1,13 +1,29 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import { bindActionCreators, compose } from 'redux';
 import { ScrollView, Text, Image, View, StyleSheet } from 'react-native'
 import { Images } from '../Themes'
 import { Metrics, ApplicationStyles } from '../Themes/'
+import { UserSelectors } from '../Redux/UserRedux'
+import { empty } from '../Lib/Utils/EmptyUtils';
 
+const mapStateToProps = (state) => ({
+  user: UserSelectors.selectUser(state)
+})
 
-export default class LaunchScreen extends Component {
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+}, dispatch)
 
-  componentDidMount() {
-    this.props.navigation.navigate('Auth')
+class LaunchScreen extends Component {
+
+  componentDidMount () {
+    const { user } = this.props
+
+    if (empty(user)) {
+      this.props.navigation.navigate('Auth')
+    } else {
+      this.props.navigation.navigate('Main')
+    }
   }
 
   render () {
@@ -47,3 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 })
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+)(LaunchScreen);

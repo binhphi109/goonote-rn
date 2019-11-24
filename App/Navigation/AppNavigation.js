@@ -45,7 +45,7 @@ const ProfileStack = createStackNavigator(
   }
 )
 
-const SettingaStack = createStackNavigator(
+const SettingsStack = createStackNavigator(
   {
     Settings: { screen: SettingsScreen },
   },
@@ -65,7 +65,7 @@ const SettingaStack = createStackNavigator(
 const DrawerStack = createDrawerNavigator({
   Main: MainStack,
   Profile: ProfileStack,
-  Settings: SettingaStack
+  Settings: SettingsStack
 }, {
   initialRouteName: 'Main',
   drawerWidth: 250,
