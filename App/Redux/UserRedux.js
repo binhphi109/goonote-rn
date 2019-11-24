@@ -25,6 +25,7 @@ export const UserSelectors = {
 export const INITIAL_STATE = Immutable({
   fetching: null,
   error: null,
+  email: null,
   username: null,
   token: null,
   user: null
@@ -33,7 +34,8 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Reducers ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [Types.LOGIN_REQUEST]: (state, { username }) => {
+  [Types.LOGIN_REQUEST]: (state, action) => {
+    const { username } = action.payload
     return state.merge({ fetching: true, username })
   },
   [Types.LOGIN_SUCCESS]: (state, action) => {
@@ -46,14 +48,15 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGOUT]: (state, action) => {
     return INITIAL_STATE
   },
-  [Types.REGISTER_REQUEST]: (state, { username }) => {
-    return state.merge({ fetching: true, username, avatar: null })
+  [Types.REGISTER_REQUEST]: (state, action) => {
+    const { email, username } = action.payload
+    return state.merge({ fetching: true, email, username })
   },
   [Types.REGISTER_SUCCESS]: (state, action) => {
-    const { avatar } = action
-    return state.merge({ fetching: false, error: null, avatar })
+    const { token, user } = action.payload
+    return state.merge({ fetching: false, error: null, token, user })
   },
   [Types.REGISTER_FAILURE]: (state) => {
-    return state.merge({ fetching: false, error: true, avatar: null })
+    return state.merge({ fetching: false, error: true, token: null, user: null })
   }
 })

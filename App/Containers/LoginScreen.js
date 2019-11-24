@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { bindActionCreators, compose } from 'redux';
 import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, StyleSheet} from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
 import _ from 'lodash/fp'
 import { Images, Metrics, Colors, Fonts } from '../Themes'
 import Button from '../Components/Button/Button'
@@ -65,7 +64,7 @@ class LoginScreen extends Component {
   }
 
   render () {
-    const { username, password } = this.state
+    const { item } = this.state
 
     return (
       <KeyboardAvoidingView style={styles.containerView} behavior='padding'>
@@ -76,14 +75,14 @@ class LoginScreen extends Component {
             <TextInput
               placeholder='Username'
               style={styles.input}
-              value={username}
+              value={item.username}
               autoCapitalize='none'
               onChangeText={text => this.handleChange('username', text)}
               />
             <TextInput
               placeholder='Password'
               style={styles.input}
-              value={password}
+              value={item.password}
               autoCapitalize='none'
               onChangeText={text => this.handleChange('password', text)}
               secureTextEntry
