@@ -5,9 +5,9 @@ import createPromiseActions from '../Lib/Redux/createPromiseActions'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createPromiseActions({
-  getAllNotes: ['notename', 'password'],
-  getOneNote: ['notename', 'password'],
-  createNote: ['email', 'notename', 'password']
+  getAllNotes: [],
+  getOneNote: ['noteId'],
+  createNote: ['note']
 })
 
 export const NoteTypes = Types
@@ -24,7 +24,9 @@ export const NoteSelectors = {
 export const INITIAL_STATE = Immutable({
   fetching: null,
   error: null,
-  notes: null
+  notes: null,
+  noteId: null,
+  note: null
 })
 
 /* ------------- Reducers ------------- */
@@ -38,26 +40,28 @@ export const reducer = createReducer(INITIAL_STATE, {
     return state.merge({ fetching: false, error: null, notes })
   },
   [Types.GET_ALL_NOTES_FAILURE]: (state) => {
-    return state.merge({ fetching: false, error: true, notes: null })
+    return state.merge({ fetching: false, error: true })
   },
-  [Types.GET_ONE_NOTE_REQUEST]: (state, { notename }) => {
-    return state.merge({ fetching: true, notename, avatar: null })
+  [Types.GET_ONE_NOTE_REQUEST]: (state, action) => {
+    const { noteId } = action.payload
+    return state.merge({ fetching: true, noteId })
   },
   [Types.GET_ONE_NOTE_SUCCESS]: (state, action) => {
-    const { avatar } = action
-    return state.merge({ fetching: false, error: null, avatar })
+    const note = action.payload
+    return state.merge({ fetching: false, error: null, note })
   },
   [Types.GET_ONE_NOTE_FAILURE]: (state) => {
-    return state.merge({ fetching: false, error: true, avatar: null })
+    return state.merge({ fetching: false, error: true })
   },
-  [Types.CREATE_NOTE_REQUEST]: (state, { notename }) => {
-    return state.merge({ fetching: true, notename, avatar: null })
+  [Types.CREATE_NOTE_REQUEST]: (state, action) => {
+    const note = action.payload
+    return state.merge({ fetching: true, note })
   },
   [Types.CREATE_NOTE_SUCCESS]: (state, action) => {
-    const { avatar } = action
-    return state.merge({ fetching: false, error: null, avatar })
+    const note = action.payload
+    return state.merge({ fetching: false, error: null, note })
   },
   [Types.CREATE_NOTE_FAILURE]: (state) => {
-    return state.merge({ fetching: false, error: true, avatar: null })
-  },
+    return state.merge({ fetching: false, error: true })
+  }
 })
