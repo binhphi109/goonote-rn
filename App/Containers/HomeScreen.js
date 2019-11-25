@@ -34,9 +34,7 @@ class HomeScreen extends Component {
   componentDidMount () {
     const { notes } = this.props
 
-    // if (empty(notes)) {
-      this.props.getAllNotes()
-    // }
+    this.props.getAllNotes()
   }
 
   handleNotePress = (note) => {
