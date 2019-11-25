@@ -8,11 +8,13 @@ import CreateNoteScreen from '../Containers/CreateNoteScreen'
 import RegisterScreen from '../Containers/RegisterScreen'
 import ProfileScreen from '../Containers/ProfileScreen'
 import SettingsScreen from '../Containers/SettingsScreen'
+import NoteEditorScreen from '../Containers/NoteEditorScreen'
 
 const MainStack = createStackNavigator(
   {
     Home: { screen: HomeScreen },
     NoteDetails: { screen: NoteDetailsScreen },
+    NoteEditor: { screen: NoteEditorScreen },
     CreateNote: { screen: CreateNoteScreen }
   },
   {

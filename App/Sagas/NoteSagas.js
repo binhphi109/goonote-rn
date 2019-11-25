@@ -32,7 +32,7 @@ function * getOne (api, action) {
 }
 
 function * create (api, action) {
-  const note = action.payload
+  const { note } = action.payload
   const auth = yield select(state => state.auth)
   const request = (note) => api.post('notes', note, { headers: { Authorization: auth.token } })
 

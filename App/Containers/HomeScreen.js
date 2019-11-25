@@ -21,10 +21,12 @@ class HomeScreen extends Component {
     title: 'Home',
     headerLeft: (
       <TouchableOpacity style={{ marginLeft: 8, padding: 8 }} onPress={() => navigation.openDrawer()}>
-        <Icon
-          name='bars'
-          size={24}
-        />
+        <Icon name='bars' size={24} />
+      </TouchableOpacity>
+    ),
+    headerRight: (
+      <TouchableOpacity style={{ marginRight: 8, padding: 8 }} onPress={() => navigation.push('NoteEditor', { new: true })}>
+        <Icon name='edit' size={24} />
       </TouchableOpacity>
     )
   })
@@ -52,7 +54,7 @@ class HomeScreen extends Component {
             <TouchableHighlight key={note.id}
               underlayColor='#DFECF3'
               onPress={() => this.handleNotePress(note)}>
-              <View style={styles.section} >
+              <View style={styles.section}>
                 <View style={styles.sectionHeader}>
                   <Text style={styles.title}>
                     {note.title}
@@ -61,7 +63,10 @@ class HomeScreen extends Component {
                     Created {moment(note.created).fromNow()}
                   </Text>
                 </View>
-                <Text style={styles.text} numberOfLines={2}>
+                <Text style={styles.text} 
+                  numberOfLines={2}
+                  ellipsizeMode='tail'
+                  >
                   {note.content}
                 </Text>
               </View>
