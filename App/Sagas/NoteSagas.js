@@ -1,5 +1,4 @@
 import { all, takeLatest, select, put } from 'redux-saga/effects'
-import { path } from 'ramda'
 import NoteActions, { NoteTypes } from '../Redux/NoteRedux'
 import { callPromiseRequest } from '../Lib/Redux'
 
@@ -7,13 +6,7 @@ function * getAll (api, action) {
   const auth = yield select(state => state.auth)
   const request = () => api.get('notes', null, { headers: { Authorization: auth.token } })
 
-  const response = yield callPromiseRequest(action, request)
-
-  if (response.ok) {
-
-  } else {
-
-  }
+  yield callPromiseRequest(action, request)
 }
 
 function * getOne (api, action) {
@@ -22,13 +15,7 @@ function * getOne (api, action) {
   const auth = yield select(state => state.auth)
   const request = () => api.get('notes/' + noteId, null, { headers: { Authorization: auth.token } })
 
-  const response = yield callPromiseRequest(action, request)
-
-  if (response.ok) {
-
-  } else {
-
-  }
+  yield callPromiseRequest(action, request)
 }
 
 function * create (api, action) {
@@ -40,8 +27,6 @@ function * create (api, action) {
 
   if (response.ok) {
     yield put(NoteActions.getAllNotes())
-  } else {
-
   }
 }
 

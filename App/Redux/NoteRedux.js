@@ -16,52 +16,42 @@ export default Creators
 /* ------------- Selectors ------------- */
 
 export const NoteSelectors = {
-  selectNotes: state => state.note.notes
+  selectNotes: state => state.notes.list
 }
-
-/* ------------- Initial State ------------- */
-
-export const INITIAL_STATE = Immutable({
-  fetching: null,
-  error: null,
-  notes: null,
-  noteId: null,
-  note: null
-})
 
 /* ------------- Reducers ------------- */
 
-export const reducer = createReducer(INITIAL_STATE, {
-  [Types.GET_ALL_NOTES_REQUEST]: (state, action) => {
-    return state.merge({ fetching: true })
-  },
-  [Types.GET_ALL_NOTES_SUCCESS]: (state, action) => {
-    const notes = action.payload
-    return state.merge({ fetching: false, error: null, notes })
-  },
-  [Types.GET_ALL_NOTES_FAILURE]: (state) => {
-    return state.merge({ fetching: false, error: true })
-  },
-  [Types.GET_ONE_NOTE_REQUEST]: (state, action) => {
-    const { noteId } = action.payload
-    return state.merge({ fetching: true, noteId })
-  },
-  [Types.GET_ONE_NOTE_SUCCESS]: (state, action) => {
-    const note = action.payload
-    return state.merge({ fetching: false, error: null, note })
-  },
-  [Types.GET_ONE_NOTE_FAILURE]: (state) => {
-    return state.merge({ fetching: false, error: true })
-  },
-  [Types.CREATE_NOTE_REQUEST]: (state, action) => {
-    const note = action.payload
-    return state.merge({ fetching: true, note })
-  },
-  [Types.CREATE_NOTE_SUCCESS]: (state, action) => {
-    const note = action.payload
-    return state.merge({ fetching: false, error: null, note })
-  },
-  [Types.CREATE_NOTE_FAILURE]: (state) => {
-    return state.merge({ fetching: false, error: true })
-  }
-})
+export const reducer = {
+  notes: createReducer(Immutable({
+    fetching: null,
+    error: null,
+    list: null
+  }), {
+    [Types.GET_ALL_NOTES_REQUEST]: (state, action) => {
+      return state.merge({ fetching: true })
+    },
+    [Types.GET_ALL_NOTES_SUCCESS]: (state, action) => {
+      const list = action.payload
+      return state.merge({ fetching: false, error: null, list })
+    },
+    [Types.GET_ALL_NOTES_FAILURE]: (state) => {
+      return state.merge({ fetching: false, error: true })
+    },
+  }),
+  note: createReducer(Immutable({
+    fetching: null,
+    error: null,
+    item: null
+  }), {
+    [Types.GET_ONE_NOTE_REQUEST]: (state, action) => {
+      return state.merge({ fetching: true })
+    },
+    [Types.GET_ONE_NOTE_SUCCESS]: (state, action) => {
+      const item = action.payload
+      return state.merge({ fetching: false, error: null, item })
+    },
+    [Types.GET_ONE_NOTE_FAILURE]: (state) => {
+      return state.merge({ fetching: false, error: true })
+    },
+  })
+}

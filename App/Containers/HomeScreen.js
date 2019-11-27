@@ -32,8 +32,6 @@ class HomeScreen extends Component {
   })
 
   componentDidMount () {
-    const { notes } = this.props
-
     this.props.getAllNotes()
   }
 
