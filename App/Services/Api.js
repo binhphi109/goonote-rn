@@ -1,7 +1,10 @@
 import apisauce from 'apisauce'
+import Config from 'react-native-config'
+
+console.tron.log('Config.API_URL', Config.API_URL)
 
 // our "constructor"
-const create = (baseURL = 'http://localhost:3001/api/') => {
+const create = (baseURL = Config.API_URL) => {
   const api = apisauce.create({
     // base URL is read from the "constructor"
     baseURL,
