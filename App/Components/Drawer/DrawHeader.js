@@ -1,17 +1,15 @@
 import React from 'react'
 import { TouchableHighlight, Text, View, StyleSheet } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
 import Avatar from './Avatar'
+import { Colors, Metrics, Fonts } from '../../Themes'
 
 class DrawerHeader extends React.Component {
   render () {
-    const { icon } = this.props
-
     return (
       <TouchableHighlight
         onPress={this.props.onPress}
         style={styles.root}
-        underlayColor='#DFECF3'
+        underlayColor={Colors.primaryLight}
       >
         <View style={styles.container}>
           <Avatar />
@@ -30,35 +28,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   container: {
-    margin: 8,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    borderRadius: 5,
+    margin: Metrics.marginBase,
+    paddingVertical: Metrics.paddingSmall,
+    paddingHorizontal: Metrics.paddingBase,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start'
-  },
-  icon: {
-    textAlign: 'center',
-    height: 24,
-    width: 24
   },
   content: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
-    marginTop: 8,
-    marginLeft: 16,
+    marginTop: Metrics.marginBase,
+    marginLeft: Metrics.marginMedium,
   },
   title: {
+    fontSize: Fonts.size.regular,
+    color: Colors.secondary,
     fontWeight: 'bold',
-    color: '#2E637B',
-    fontSize: 14,
   },
   sub: {
-    marginTop: 4,
-    color: '#2E637B',
-    fontSize: 12,
+    marginTop: Metrics.marginSmall,
+    color: Colors.secondary,
+    fontSize: Fonts.size.medium,
   }
 })
 

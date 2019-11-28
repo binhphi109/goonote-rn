@@ -1,6 +1,7 @@
 import React from 'react'
 import { TouchableHighlight, Text, View, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { Colors } from '../../Themes'
 
 class Avatar extends React.Component {
   render () {
@@ -9,9 +10,8 @@ class Avatar extends React.Component {
     return (
       <TouchableHighlight
         style={styles.root}
-        underlayColor='#DFECF3'
         onPress={this.props.onPress}
-      >
+        >
         <View style={styles.container}>
           <Text style={styles.text}>G</Text>
         </View>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     width: 48
   },
   container: {
-    backgroundColor: '#DFECF3',
+    backgroundColor: Colors.secondary,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   text: {
-    color: '#2E637B',
+    color: Colors.primary,
     fontSize: 24,
     fontWeight: 'bold',
   }

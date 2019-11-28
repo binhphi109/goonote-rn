@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   section: {
     padding: 16,
-    borderBottomColor: 'grey',
+    borderBottomColor: Colors.grey,
     borderBottomWidth: StyleSheet.hairlineWidth
   },
   sectionHeader: {

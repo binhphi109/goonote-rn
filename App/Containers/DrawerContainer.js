@@ -7,6 +7,7 @@ import Devider from '../Components/Drawer/Devider'
 import DrawerItem from '../Components/Drawer/DrawItem'
 import DrawerHeader from '../Components/Drawer/DrawHeader'
 import UserActions from '../Redux/UserRedux'
+import { Colors, AppStyles } from '../Themes';
 
 const mapStateToProps = (state) => ({
 })
@@ -19,7 +20,7 @@ class DrawerContainer extends React.Component {
   render () {
     const { navigation } = this.props
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <SafeAreaView style={AppStyles.safeAreaView}>
         <View style={styles.container}>
           <DrawerHeader
             title='Goo Ku'
@@ -64,15 +65,10 @@ class DrawerContainer extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  content: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-  },
   container: {
     flex: 1,
     alignItems: 'flex-start',
+    backgroundColor: Colors.primary
   }
 })
 

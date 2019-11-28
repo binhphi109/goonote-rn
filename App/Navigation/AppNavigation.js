@@ -9,6 +9,7 @@ import RegisterScreen from '../Containers/RegisterScreen'
 import ProfileScreen from '../Containers/ProfileScreen'
 import SettingsScreen from '../Containers/SettingsScreen'
 import NoteEditorScreen from '../Containers/NoteEditorScreen'
+import { AppStyles, Colors } from '../Themes'
 
 const MainStack = createStackNavigator(
   {
@@ -18,15 +19,7 @@ const MainStack = createStackNavigator(
     CreateNote: { screen: CreateNoteScreen }
   },
   {
-    initialRouteName: 'Home',
-    defaulfNavigationOptions: ({ navigation }) => ({
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        textAlign: 'center',
-        alignSelf: 'left',
-        flex: 1
-      }
-    })
+    initialRouteName: 'Home'
   }
 )
 
@@ -35,15 +28,7 @@ const ProfileStack = createStackNavigator(
     Profile: { screen: ProfileScreen },
   },
   {
-    initialRouteName: 'Profile',
-    defaulfNavigationOptions: ({ navigation }) => ({
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        textAlign: 'center',
-        alignSelf: 'left',
-        flex: 1
-      }
-    })
+    initialRouteName: 'Profile'
   }
 )
 
@@ -52,15 +37,7 @@ const SettingsStack = createStackNavigator(
     Settings: { screen: SettingsScreen },
   },
   {
-    initialRouteName: 'Settings',
-    defaulfNavigationOptions: ({ navigation }) => ({
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        textAlign: 'center',
-        alignSelf: 'left',
-        flex: 1
-      }
-    })
+    initialRouteName: 'Settings'
   }
 )
 

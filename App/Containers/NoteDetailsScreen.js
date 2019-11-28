@@ -1,27 +1,34 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, Image, View, TouchableOpacity, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Images, Metrics, Colors, Fonts } from '../Themes'
+import { Images, Metrics, Colors, Fonts, AppStyles } from '../Themes'
 import moment from 'moment';
 import Devider from '../Components/Drawer/Devider';
+import ButtonIcon from '../Components/Button/ButtonIcon';
+import ButtonText from '../Components/Button/ButtonText';
 
 export default class NoteDetailsScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Note details',
+    headerStyle: AppStyles.navigationHeader,
+    headerTintColor: Colors.secondary,
     headerLeft: (
-      <TouchableOpacity style={{ marginLeft: 10, padding: 10 }} 
-        onPress={() => navigation.goBack()}>
-        <Icon
-          name='chevron-left'
-          size={24}
+      <ButtonIcon
+        style={styles.navigationLeft} 
+        icon='chevron-left' 
+        color={Colors.primary}
+        iconSize={Metrics.icons.base}
+        onPress={() => navigation.goBack()}
         />
-      </TouchableOpacity>
     ),
     headerRight: (
-      <TouchableOpacity style={{ marginLeft: 10, padding: 10 }} 
-        onPress={() => navigation.push('NoteEditor', { new: false, note: navigation.getParam('note') })}>
-        <Text>Edit</Text>
-      </TouchableOpacity>
+      <ButtonText 
+        style={styles.navigationRight} 
+        text='Edit' 
+        color={Colors.primary}
+        textBold
+        onPress={() => navigation.push('NoteEditor', { new: false, note: navigation.getParam('note') })}
+        />
     )
   });
 
@@ -53,6 +60,14 @@ const styles = StyleSheet.create({
   root: {
     flex: 1
   },
+  navigationLeft: { 
+    marginLeft: Metrics.marginBase, 
+    padding: Metrics.paddingBase 
+  },
+  navigationRight: { 
+    marginRight: Metrics.marginBase, 
+    padding: Metrics.paddingBase,
+  },
   container: {
     flex: 1,
     backgroundColor: Colors.transparent
@@ -60,20 +75,21 @@ const styles = StyleSheet.create({
   section: {
   },
   sectionContent: {
-    padding: 16
+    padding: Metrics.paddingMedium
   },
   title: {
-    fontSize: 20,
-    marginBottom: 4,
+    color: Colors.secondary,
+    fontSize: Fonts.size.h5,
+    marginBottom: Metrics.marginSmall,
     fontWeight: 'bold'
   },
   sectionMeta: {
   },
   subtitle: {
-    fontSize: 10,
-    color: 'grey'
+    fontSize: Fonts.size.small,
+    color: Colors.grey
   },
   text: {
-    marginTop: 16,
+    marginTop: Metrics.marginMedium,
   }
 })

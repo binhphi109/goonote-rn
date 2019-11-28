@@ -9,12 +9,13 @@ const size = {
   h2: 34,
   h3: 30,
   h4: 26,
-  h5: 20,
-  h6: 19,
-  input: 18,
-  regular: 17,
-  medium: 14,
-  small: 12,
+  h5: 22,
+  h6: 18,
+  input: 16,
+  large: 16,
+  regular: 14,
+  medium: 12,
+  small: 10,
   tiny: 8.5
 }
 
@@ -50,6 +51,14 @@ const style = {
   description: {
     fontFamily: type.base,
     fontSize: size.medium
+  },
+  logo: {
+    fontSize: size.h1,
+    fontWeight: '800'
+  },
+  button: {
+    fontSize: size.medium,
+    fontWeight: '700'
   }
 }
 

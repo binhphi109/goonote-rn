@@ -4,9 +4,10 @@ import { bindActionCreators, compose } from 'redux'
 import { ScrollView, Text, Image, View, TouchableOpacity, TouchableHighlight, StyleSheet } from 'react-native'
 import moment from 'moment'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Images, Metrics, Colors, Fonts } from '../Themes/'
+import { Images, Metrics, Colors, Fonts, AppStyles } from '../Themes/'
 import { empty } from '../Lib/Utils/EmptyUtils'
 import NoteActions, { NoteSelectors } from '../Redux/NoteRedux'
+import ButtonIcon from '../Components/Button/ButtonIcon'
 
 const mapStateToProps = (state) => ({
   notes: NoteSelectors.selectNotes(state)
@@ -19,15 +20,25 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Home',
+    headerStyle: AppStyles.navigationHeader,
+    headerTintColor: Colors.secondary,
     headerLeft: (
-      <TouchableOpacity style={{ marginLeft: 8, padding: 8 }} onPress={() => navigation.openDrawer()}>
-        <Icon name='bars' size={24} />
-      </TouchableOpacity>
+      <ButtonIcon
+        style={styles.navigationLeft} 
+        icon='bars' 
+        color={Colors.primary}
+        iconSize={Metrics.icons.base}
+        onPress={() => navigation.openDrawer()}
+        />
     ),
     headerRight: (
-      <TouchableOpacity style={{ marginRight: 8, padding: 8 }} onPress={() => navigation.push('NoteEditor', { new: true })}>
-        <Icon name='edit' size={24} />
-      </TouchableOpacity>
+      <ButtonIcon
+        style={styles.navigationRight} 
+        icon='edit' 
+        color={Colors.primary}
+        iconSize={Metrics.icons.base}
+        onPress={() => navigation.push('NoteEditor', { new: true })}
+        />
     )
   })
 
@@ -48,7 +59,7 @@ class HomeScreen extends Component {
 
           {notes && notes.map(note => 
             <TouchableHighlight key={note.id}
-              underlayColor='#DFECF3'
+              underlayColor={Colors.lightgrey}
               onPress={() => this.handleNotePress(note)}>
               <View style={styles.section}>
                 <View style={styles.sectionHeader}>
@@ -79,23 +90,34 @@ const styles = StyleSheet.create({
   root: {
     flex: 1
   },
+  navigationLeft: { 
+    marginLeft: Metrics.marginBase, 
+    padding: Metrics.paddingBase 
+  },
+  navigationRight: { 
+    marginRight: Metrics.marginBase, 
+    padding: Metrics.paddingBase,
+  },
   container: {
     flex: 1,
     backgroundColor: Colors.transparent
   },
   section: {
-    padding: 16,
-    borderBottomColor: 'grey',
+    padding: Metrics.paddingMedium,
+    borderBottomColor: Colors.grey,
     borderBottomWidth: StyleSheet.hairlineWidth
   },
   sectionHeader: {
-    marginBottom: 16
+    marginBottom: Metrics.marginMedium
   },
   title: {
+    color: Colors.secondary,
+    fontSize: Fonts.size.large,
     fontWeight: 'bold'
   },
   subtitle: {
-    fontSize: 12
+    fontSize: Fonts.size.small,
+    color: Colors.grey,
   },
   text: {
   }

@@ -5,11 +5,12 @@ import {Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, Keyboa
 import _ from 'lodash/fp'
 import moment from 'moment'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Images, Metrics, Colors, Fonts } from '../Themes'
+import { Images, Metrics, Colors, Fonts, AppStyles } from '../Themes'
 import { setToPath } from '../Lib/Utils/JsonUtils'
 import NoteActions from '../Redux/NoteRedux'
 import Devider from '../Components/Drawer/Devider'
 import { empty } from '../Lib/Utils/EmptyUtils'
+import ButtonText from '../Components/Button/ButtonText'
 
 const mapStateToProps = (state) => ({
 })
@@ -33,15 +34,24 @@ class NoteEditorScreen extends Component {
 
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam('new') ? 'Create Note' : 'Edit Note',
+    headerStyle: AppStyles.navigationHeader,
+    headerTintColor: Colors.secondary,
     headerLeft: (
-      <TouchableOpacity style={{ marginLeft: 10, padding: 10 }} onPress={navigation.getParam('handleBack')}>
-        <Text>Cancel</Text>
-      </TouchableOpacity>
+      <ButtonText 
+        style={styles.navigationLeft} 
+        text='Cancel' 
+        color={Colors.primary}
+        onPress={navigation.getParam('handleBack')}
+        />
     ),
     headerRight: (
-      <TouchableOpacity style={{ marginLeft: 10, padding: 10 }} onPress={navigation.getParam('handleSave')}>
-        <Text style={{ fontWeight: 'bold' }}>Save</Text>
-      </TouchableOpacity>
+      <ButtonText 
+        style={styles.navigationRight} 
+        text='Save' 
+        color={Colors.primary}
+        textBold
+        onPress={navigation.getParam('handleSave')}
+        />
     )
   });
 
@@ -115,6 +125,7 @@ class NoteEditorScreen extends Component {
               placeholder='Title'
               value={item.title}
               autoFocus
+              selectionColor={Colors.secondary}
               onChangeText={text => this.handleChange('title', text)}
               />
             <Devider />
@@ -127,6 +138,7 @@ class NoteEditorScreen extends Component {
               placeholder="What's on your mind?"
               value={item.content}
               multiline
+              selectionColor={Colors.black}
               onChangeText={text => this.handleChange('content', text)}
               />
           </View>
@@ -140,6 +152,14 @@ const styles = StyleSheet.create({
   root: {
     flex: 1
   },
+  navigationLeft: { 
+    marginLeft: Metrics.marginBase, 
+    padding: Metrics.paddingBase 
+  },
+  navigationRight: { 
+    marginRight: Metrics.marginBase, 
+    padding: Metrics.paddingBase,
+  },
   container: {
     flex: 1,
     backgroundColor: Colors.transparent
@@ -147,28 +167,28 @@ const styles = StyleSheet.create({
   section: {
   },
   sectionHeader: {
-    padding: 16,
-    backgroundColor: '#F1F1F1',
+    padding: Metrics.paddingMedium,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: 'grey'
+    borderBottomColor: Colors.grey
   },
   title: {
-    fontSize: 20,
-    marginBottom: 4,
+    color: Colors.secondary,
+    fontSize: Fonts.size.h5,
+    marginBottom: Metrics.marginSmall,
     fontWeight: 'bold'
   },
   sectionContent: {
-    padding: 16
+    padding: Metrics.paddingMedium
   },
   sectionMeta: {
   },
   subtitle: {
-    fontSize: 10,
-    color: 'grey'
+    fontSize: Fonts.size.small,
+    color: Colors.grey
   },
   text: {
-    marginTop: 16,
-    fontSize: 14
+    marginTop: Metrics.marginMedium,
+    fontSize: Fonts.size.regular
   }
 })
 

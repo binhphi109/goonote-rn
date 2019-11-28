@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { TouchableOpacity, Text, StyleSheet } from 'react-native'
-import { Fonts, Colors } from '../../Themes'
+import { Fonts, Colors, Metrics } from '../../Themes'
 
 export default class Button extends Component {
   static propTypes = {
@@ -32,19 +32,19 @@ export default class Button extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#2980b6',
-    borderRadius: 2,
-    paddingVertical: 15
+    paddingVertical: Metrics.paddingMedium,
+    borderRadius: Metrics.borderRadius,
+    backgroundColor: Colors.secondary,
   },
   buttonSecondary: {
-    backgroundColor: '#fff'
+    backgroundColor: Colors.primaryLight,
   },
   text: {
-    color: '#fff',
+    ...Fonts.style.button,
+    color: Colors.primary,
     textAlign: 'center',
-    fontWeight: '700'
   },
   textSecondary: {
-    color: '#000'
+    color: Colors.white,
   }
 })

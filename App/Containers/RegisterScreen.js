@@ -7,6 +7,7 @@ import { Images, Metrics, Colors, Fonts } from '../Themes'
 import Button from '../Components/Button/Button'
 import { setToPath } from '../Lib/Utils/JsonUtils'
 import UserActions from '../Redux/UserRedux'
+import ButtonText from '../Components/Button/ButtonText'
 
 const mapStateToProps = (state) => ({
 })
@@ -76,6 +77,7 @@ class RegisterScreen extends Component {
               style={styles.input}
               value={item.email}
               autoCapitalize='none'
+              selectionColor={Colors.secondary}
               onChangeText={text => this.handleChange('email', text)}
               />
             <TextInput
@@ -83,6 +85,7 @@ class RegisterScreen extends Component {
               style={styles.input}
               value={item.username}
               autoCapitalize='none'
+              selectionColor={Colors.secondary}
               onChangeText={text => this.handleChange('username', text)}
               />
             <TextInput
@@ -90,6 +93,7 @@ class RegisterScreen extends Component {
               style={styles.input}
               value={item.password}
               autoCapitalize='none'
+              selectionColor={Colors.secondary}
               onChangeText={text => this.handleChange('password', text)}
               secureTextEntry
               />
@@ -99,10 +103,10 @@ class RegisterScreen extends Component {
               type='primary'
               onPress={this.handleRegister}
             />
-            <Button
+            <ButtonText
               style={styles.login}
-              text='Login'
-              type='secondary'
+              text='Already have an account?'
+              color={Colors.secondary}
               onPress={this.handleLogin}
             />
           </View>
@@ -118,29 +122,31 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 16,
-    backgroundColor: '#2c3e50'
+    padding: Metrics.paddingMedium,
+    backgroundColor: Colors.primary,
   },
   logoText: {
-    fontSize: 40,
-    fontWeight: '800',
+    ...Fonts.style.logo,
     marginTop: 150,
-    marginBottom: 30,
+    marginBottom: 50,
     textAlign: 'center',
-    color: '#2980b6'
+    color: Colors.secondary
   },
   input: {
+    fontSize: Fonts.size.input,
     height: 40,
-    backgroundColor: 'rgba(225,225,225,0.2)',
-    marginBottom: 10,
-    padding: 10,
-    borderRadius: 2,
-    color: '#fff'
+    color: Colors.white,
+    backgroundColor: Colors.primaryLight,
+    marginBottom: Metrics.marginBase,
+    padding: Metrics.paddingBase,
+    borderRadius: Metrics.borderRadius,
   },
   register: {
-    marginBottom: 10
+    marginTop: Metrics.marginMedium,
+    marginBottom: Metrics.marginLarge,
   },
   login: {
+    alignItems: 'center',
   }
 })
 
