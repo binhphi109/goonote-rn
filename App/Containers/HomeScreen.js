@@ -59,7 +59,7 @@ class HomeScreen extends Component {
 
           {notes && notes.map(note => 
             <TouchableHighlight key={note.id}
-              underlayColor={Colors.lightgrey}
+              underlayColor={Colors.lightgreyUnderlay}
               onPress={() => this.handleNotePress(note)}>
               <View style={styles.section}>
                 <View style={styles.sectionHeader}>

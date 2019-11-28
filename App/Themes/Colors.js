@@ -26,9 +26,11 @@ const colors = {
   black: '#000',
   grey: '#808080',
   lightgrey: '#d3d3d3',
+  lightgreyUnderlay: 'rgba(211, 211, 211, 0.4)',
   primary: '#344955',
   primaryShadow: '#232f34',
   primaryLight: '#4a6572',
+  primaryLightUnderlay: 'rgba(74, 101, 114, 0.4)',
   secondary: '#f9aa33',
 }
 

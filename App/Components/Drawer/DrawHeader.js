@@ -9,7 +9,7 @@ class DrawerHeader extends React.Component {
       <TouchableHighlight
         onPress={this.props.onPress}
         style={styles.root}
-        underlayColor={Colors.primaryLight}
+        underlayColor={Colors.primaryLightUnderlay}
       >
         <View style={styles.container}>
           <Avatar />

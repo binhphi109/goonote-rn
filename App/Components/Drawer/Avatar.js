@@ -25,10 +25,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 24,
     height: 48,
-    width: 48
+    width: 48,
   },
   container: {
-    backgroundColor: Colors.secondary,
+    backgroundColor: Colors.primaryLight,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     borderRadius: 24,
   },
   text: {
-    color: Colors.primary,
+    color: Colors.secondary,
     fontSize: 24,
     fontWeight: 'bold',
   }

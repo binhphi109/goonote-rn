@@ -11,7 +11,7 @@ class DrawerItem extends React.Component {
       <TouchableHighlight
         onPress={this.props.onPress}
         style={styles.root}
-        underlayColor={Colors.primaryLight}
+        underlayColor={Colors.primaryLightUnderlay}
         >
         <View style={styles.container}>
           <Icon name={icon} size={Metrics.icons.large} color={Colors.secondary} style={styles.icon} />
